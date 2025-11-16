@@ -1,3 +1,5 @@
+package HashTable;
+
 public class Node {
     private String palavra;
     private int frequencia;

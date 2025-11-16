@@ -1,10 +1,8 @@
-package Documento;
+
 
 // Importa o Set (necessário para o processarTexto)
 import java.util.Set;
 // Importa as classes da HashTable que você criou
-import HashTable.HashTable;
-import HashTable.Node;
 
 public class Documento {
 
@@ -22,7 +20,7 @@ public class Documento {
      * @param hashType O tipo de hash (DIVISAO ou MULTIPLICACAO) que este
      * documento deve usar para sua tabela interna.
      */
-    public documento(String nomeArquivo, String textoOriginal, HashTable.HashType hashType) {
+    public Documento(String nomeArquivo, String textoOriginal, HashTable.HashType hashType) {
         this.nomeArquivo = nomeArquivo;
         this.textoOriginal = textoOriginal;
 

@@ -1,4 +1,3 @@
-package Documento;
 
 public class ProcessadorTexto {
 

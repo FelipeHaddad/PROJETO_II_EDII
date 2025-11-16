@@ -1,8 +1,3 @@
-package ComparadorDeDocumentos;
-
-// Importar as classes dos outros pacotes
-import Documento.*;
-import HashTable.*;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -70,5 +65,4 @@ public class ComparadorDeDocumentos {
         }
     }
 
-    // (Futuramente, você pode adicionar Jaccard, Dice, etc. aqui) [cite: 28]
 }

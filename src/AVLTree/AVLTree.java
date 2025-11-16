@@ -172,4 +172,34 @@ public class AVLTree {
             listarDecrescenteRecursivo(no.getEsq(), lista); 
         }
     }
+    /**
+     * Retorna os K resultados com maior similaridade (Top-K).
+     */
+    public List<Resultado> topK(int k) {
+        List<Resultado> lista = new ArrayList<>();
+        topKRecursivo(this.raiz, lista, k);
+        return lista;
+    }
+
+    private void topKRecursivo(AVLNode no, List<Resultado> lista, int k) {
+        if (no == null || lista.size() >= k) {
+            return;
+        }
+
+        // Visita primeiro a direita (maiores similaridades)
+        topKRecursivo(no.getDir(), lista, k);
+
+        // Adiciona os resultados deste nó
+        for (Resultado r : no.getResultados()) {
+            if (lista.size() < k) {
+                lista.add(r);
+            } else {
+                return; // já coletou k
+            }
+        }
+
+        // Visita a esquerda (similaridades menores)
+        topKRecursivo(no.getEsq(), lista, k);
+    }
+
 }

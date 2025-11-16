@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +10,7 @@ public class ComparadorDeDocumentos {
 
     /**
      * Calcula a Similaridade de Cosseno entre dois documentos.
-     * A métrica de Cosseno é uma boa escolha, conforme sugerido pelo PDF. [cite: 28, 35]
+     * A métrica de Cosseno é uma boa escolha, conforme sugerido pelo PDF.
      *
      * Fórmula: Similaridade = (A · B) / (||A|| * ||B||)
      *
@@ -27,8 +26,25 @@ public class ComparadorDeDocumentos {
 
         // 1. Criar o vocabulário combinado (todas as palavras únicas de ambos)
         // Usamos os tokens limpos (sem stop words) que já temos nos documentos.
-        Set<String> vocabulario = new HashSet<>(Arrays.asList(doc1.getTokens()));
-        vocabulario.addAll(Arrays.asList(doc2.getTokens()));
+    
+        // Inicializa o vocabulário como um HashSet vazio
+        Set<String> vocabulario = new HashSet<>();
+
+        // Pega os tokens de forma segura
+        String[] tokens1 = doc1.getTokens();
+        String[] tokens2 = doc2.getTokens();
+
+        // Adiciona os tokens do doc1 apenas se não forem nulos
+        if (tokens1 != null) {
+            vocabulario.addAll(Arrays.asList(tokens1));
+        }
+
+        // Adiciona os tokens do doc2 apenas se não forem nulos
+        if (tokens2 != null) {
+            vocabulario.addAll(Arrays.asList(tokens2));
+        }
+ 
+
 
         // 2. Calcular o Produto Escalar (A · B) e as Magnitudes (||A|| e ||B||)
         // Fazemos tudo em um loop só para eficiência.
@@ -64,5 +80,4 @@ public class ComparadorDeDocumentos {
             return dotProduct / (magnitudeFinal1 * magnitudeFinal2);
         }
     }
-
 }

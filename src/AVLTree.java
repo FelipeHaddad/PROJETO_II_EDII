@@ -2,7 +2,6 @@ import java.util.*;
 
 public class AVLTree {
     private AVLNode raiz;
-    // Variável para contabilizar rotações [cite: 22]
     private int rotacoesSimples; 
     private int rotacoesDuplas;
 
@@ -12,7 +11,7 @@ public class AVLTree {
         this.rotacoesDuplas = 0;
     }
 
-    // --- Métodos Auxiliares ---
+    //Metodos Auxiliares
 
     private int getAltura(AVLNode no) {
         return (no == null) ? 0 : no.getAltura();
@@ -26,68 +25,51 @@ public class AVLTree {
         no.setAltura(1 + Math.max(getAltura(no.getEsq()), getAltura(no.getDir())));
     }
 
-    // --- Rotações (Implementação baseada na lógica do vídeo) ---
+    //Rotacoes
 
     private AVLNode rotacaoSimplesDireita(AVLNode desbalanceado) {
-        // Implementação da Rotação Simples Direita (LL)
-        // 'desbalanceado' é 'p' no vídeo, e 'novaRaiz' é 'q'
         AVLNode novaRaiz = desbalanceado.getEsq();
         desbalanceado.setEsq(novaRaiz.getDir());
         novaRaiz.setDir(desbalanceado);
 
-        // Atualiza as alturas
         atualizarAltura(desbalanceado);
         atualizarAltura(novaRaiz);
         
-        // Contagem de Rotação Simples [cite: 22]
         this.rotacoesSimples++;
         
         return novaRaiz;
     }
 
     private AVLNode rotacaoSimplesEsquerda(AVLNode desbalanceado) {
-        // Implementação da Rotação Simples Esquerda (RR)
-        // 'desbalanceado' é 'p' no vídeo, e 'novaRaiz' é 'q'
         AVLNode novaRaiz = desbalanceado.getDir();
         desbalanceado.setDir(novaRaiz.getEsq());
         novaRaiz.setEsq(desbalanceado);
 
-        // Atualiza as alturas
         atualizarAltura(desbalanceado);
         atualizarAltura(novaRaiz);
 
-        // Contagem de Rotação Simples [cite: 22]
         this.rotacoesSimples++;
         
         return novaRaiz;
     }
 
     private AVLNode rotacaoDuplaEsquerdaDireita(AVLNode desbalanceado) {
-        // Implementação da Rotação Dupla Esquerda-Direita (LR)
         desbalanceado.setEsq(rotacaoSimplesEsquerda(desbalanceado.getEsq()));
         
-        // Contagem de Rotação Dupla (após as duas simples) [cite: 22]
         this.rotacoesDuplas++; 
         
         return rotacaoSimplesDireita(desbalanceado);
     }
     
     private AVLNode rotacaoDuplaDireitaEsquerda(AVLNode desbalanceado) {
-        // Implementação da Rotação Dupla Direita-Esquerda (RL)
         desbalanceado.setDir(rotacaoSimplesDireita(desbalanceado.getDir()));
-        
-        // Contagem de Rotação Dupla (após as duas simples) [cite: 22]
+
         this.rotacoesDuplas++;
         
         return rotacaoSimplesEsquerda(desbalanceado);
     }
 
 
-    // --- Método de Inserção Principal ---
-    
-    /**
-     * Insere o resultado na AVL.
-     */
     public void inserir(Resultado resultado) {
         this.raiz = inserirRecursivo(this.raiz, resultado);
     }

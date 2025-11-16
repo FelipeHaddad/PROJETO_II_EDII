@@ -15,12 +15,11 @@ public class AVLNode {
         this.chave = resultado.getSimilaridade();
         this.resultados = new ArrayList<>();
         this.resultados.add(resultado);
-        this.altura = 1; // Altura inicial é 1 para um novo nó
+        this.altura = 1;
         this.esq = null;
         this.dir = null;
     }
 
-    // Getters and Setters...
     public double getChave() { return chave; }
     public List<Resultado> getResultados() { return resultados; }
     public int getAltura() { return altura; }

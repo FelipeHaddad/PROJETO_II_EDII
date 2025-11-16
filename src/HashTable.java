@@ -4,7 +4,7 @@ import java.util.List;
 
 public class HashTable {
 
-    // Enum para escolher a função hash (requisito do projeto [cite: 20])
+    // Enum para escolher a função hash 
     public enum HashType {
         DIVISAO,
         MULTIPLICACAO
@@ -34,7 +34,7 @@ public class HashTable {
         }
     }
 
-    // --- Métodos de Hash (Limpos) ---
+    // --- Métodos de Hash ---
 
     public int MetodoDivisao(String palavra) {
         int valorTotal = 0;
@@ -50,7 +50,7 @@ public class HashTable {
             valorTotal += (int) palavra.charAt(i);
         }
 
-        double constante = 0.6180339887; // (Ex: A M=15, A=0.6, (15*0.6)%1 = 9%1 = 0)
+        double constante = 0.6180339887; 
         double valorHash = (valorTotal * constante) % 1;
         return (int) (this.tamanho * valorHash);
     }
@@ -67,12 +67,7 @@ public class HashTable {
 
     // --- Métodos Principais (put/get) ---
 
-    /**
-     * Insere uma palavra na tabela.
-     * Se a palavra já existir, incrementa sua frequência.
-     * Se não, adiciona como um novo nó no início da lista.
-     * [Requisito "put" - cite: 109]
-     */
+
     public void put(String palavra) {
         int indice = hash(palavra);
 
@@ -100,11 +95,7 @@ public class HashTable {
         this.array.set(indice, novoNode);
     }
 
-    /**
-     * Busca um nó na tabela pela palavra.
-     * [Requisito "get" - cite: 109]
-     * @return o Node se encontrado, ou null se não encontrado.
-     */
+
     public Node get(String palavra) {
         int indice = hash(palavra);
         Node current = this.array.get(indice);
@@ -122,10 +113,7 @@ public class HashTable {
         return null;
     }
 
-    /**
-     * Método auxiliar para obter a frequência de uma palavra.
-     * @return A frequência (int) da palavra, ou 0 se ela não existir.
-     */
+
     public int getFrequencia(String palavra) {
         Node node = get(palavra);
         if (node != null) {
@@ -133,4 +121,6 @@ public class HashTable {
         }
         return 0;
     }
+
+    
 }

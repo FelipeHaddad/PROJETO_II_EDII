@@ -124,8 +124,8 @@ public class Main {
                     arvoreResultados.inserir(res);
                 }
             }
-
-            System.out.println("Total de pares comparados: " + totalPares); // [cite: 94]
+            
+            System.out.println("Total de pares comparados: " + totalPares); 
             System.out.println("Total de rotações na AVL: " + arvoreResultados.getTotalRotacoes());
 
             // --- 6. Exibição de Resultados (Lista ou TopK) ---

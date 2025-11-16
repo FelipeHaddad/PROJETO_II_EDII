@@ -1,0 +1,1 @@
+O projeto de estrutura de dados pede uma Árvore AVL e uma Tabela Hash. O balanceamento da Árvore AVL é o mais difícil!

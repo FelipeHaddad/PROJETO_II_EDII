@@ -1,0 +1,1 @@
+Minha Tabela Hash usa o método da divisão. A colisão é um problema sério quando a função de hash não é boa. O balanceamento da Tabela Hash não existe.
